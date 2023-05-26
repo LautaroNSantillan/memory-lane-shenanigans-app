@@ -14,6 +14,8 @@ app.use(bodyParser.urlencoded({limit: "30mb", extended: true}));
 
 app.use(cors());
 
+const DB_URL = 'mongodb+srv://lns:<password>@cluster0.fnrtsky.mongodb.net/'
+
 const PORT = process.env.PORT || 5000;
 
 mongoose.connect(DB_URL, {useNewUrlParser: true, useUnifiedTopology: true})
