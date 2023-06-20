@@ -1,16 +1,24 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { Layout, Space } from 'antd';
+
+import {getPosts} from './actions/posts';
 import Posts from './components/Posts/Posts';
 import Form from './components/Form/Form';
 import { Container, AppBar, Typography, Grow, Grid } from '@material-ui/core';
 import useStyles from './style';
 import { headerStyle, contentStyle, siderStyle, footerStyle } from './style';
+import { useDispatch } from 'react-redux';
 
 
 const { Header, Footer, Sider, Content } = Layout;
 
 const App = () => {
     const classes = useStyles();
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(getPosts());
+    }, [dispatch]);
     return (
         <Layout>
             <Header style={headerStyle} >
